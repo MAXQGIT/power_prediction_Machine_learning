@@ -131,3 +131,8 @@ r2 = r2_score(y_test, predictions)
 print("Best Hyperparameters:", best_params)
 print('Root Mean Squared Error (RMSE):', rmse)
 print('R-squared (R2) Score:', r2)
+import joblib
+model_filename = 'best_gradient_boosting_model.pkl'
+joblib.dump(best_model, model_filename)
+
+print(f"Best model saved to {model_filename}")
