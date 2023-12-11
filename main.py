@@ -10,6 +10,7 @@ from sklearn.svm import SVR
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.preprocessing import MinMaxScaler
+
 df = pd.read_csv('continuous dataset.csv', index_col=[0], parse_dates=[0])
 
 cat_type = CategoricalDtype(categories=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], ordered=True)
@@ -64,11 +65,11 @@ upper_bound = Q3 + 1.5 * IQR
 # Filter the DataFramefeatures_and_target to exclude outliers
 filtered_df = features_and_target[(features_and_target['nat_demand'] >= lower_bound) & (features_and_target['nat_demand'] <= upper_bound)]
 
-df1 = pd.get_dummies(filtered_df,columns=['weekday','season'])
-X=df1.drop('nat_demand',axis=1)
-y= df1['nat_demand']
+df1 = pd.get_dummies(filtered_df, columns=['weekday', 'season'])
+X = df1.drop('nat_demand', axis=1)
+y = df1['nat_demand']
 scler = MinMaxScaler()
-X=scler.fit_transform(X)
+X = scler.fit_transform(X)
 
 import os
 
@@ -132,6 +133,7 @@ print("Best Hyperparameters:", best_params)
 print('Root Mean Squared Error (RMSE):', rmse)
 print('R-squared (R2) Score:', r2)
 import joblib
+
 model_filename = 'best_gradient_boosting_model.pkl'
 joblib.dump(best_model, model_filename)
 
