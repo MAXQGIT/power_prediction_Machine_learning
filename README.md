@@ -1,0 +1,3 @@
+总结了一些常见机器算法：LinearRegression，DecisionTreeRegressor，RandomForestRegressor，GradientBoostingRegressor，SVR，KNeighborsRegressor，xgb，lightGBM
+对其中机器学习算法使用了网格搜索的训练办法
+后续还会整理其他的机器算法
